@@ -1,0 +1,116 @@
+<html>
+	<head>
+		<title>Lucid_works_solr_ref_guide-Jeffrey Zhang</title>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+		<script type="text/javascript" src="scripts/shCore.js"></script>
+		<link type="text/css" href="css/main.css" rel="stylesheet"/>
+		<script type="text/javascript" src="scripts/shBrushJScript.js"></script>
+		<script type="text/javascript" src="scripts/shBrushPython.js"></script>
+		<link type="text/css" rel="stylesheet" href="styles/shCoreDjango.css"/>
+		<link type="text/css" rel="stylesheet" href="styles/shCore.css"/>
+		<script type="text/javascript">SyntaxHighlighter.all();</script>
+	</head>
+	<body>
+		<div id="wrapper">
+			<header>
+				<nav>
+					<ul>
+						<li class="first"><a title="Home" href="index.html">Home</a></li>
+						<li><a title="Blog" href="diary/diary.html">Blog</a></li>
+						<li class="actived"><a title="Wiki" href="index.html">Wiki</a></li>
+						<li><a title="Twitter" href="https://twitter.com/GeassLei">Twitter</a></li>
+						<li class="last"><a title="About Me" href="../resume/resume.html">README</a></li>
+					</ul>
+				</nav>
+			</header>
+			<article>
+
+<h1 id="toc_1">Lucid works solr ref guide</h1>
+
+<p>
+The implementing class is responsible for making sure the field is handled correctly. In the class names in schema.xml, the string solr is shorthand for org.apache.solr.schema or org.apache.solr.analysis. Therefore, solr.<a href="TextField.html">TextField</a> is really org.apache.solr.schema.<a href="TextField.html">TextField</a>.
+</p>
+
+<p>
+Field
+<a href="BCDLongField.html">BCDLongField</a>
+<a href="BCDStrField.html">BCDStrField</a>
+<a href="BinaryField.html">BinaryField</a>
+<a href="BoolField.html">BoolField</a>
+<a href="ByteField.html">ByteField</a>
+<a href="DateField.html">DateField</a>
+<a href="DoubleField.html">DoubleField</a>
+<a href="ExternalFileField.html">ExternalFileField</a>
+<a href="FloatField.html">FloatField</a>
+<a href="IntField.html">IntField</a>
+<a href="LongField.html">LongField</a>
+<a href="RandomSortField.html">RandomSortField</a>
+<a href="ShortField.html">ShortField</a>
+<a href="SortableDoubleField.html">SortableDoubleField</a>
+<a href="SortableFloatField.html">SortableFloatField</a>
+<a href="SortableIntField.html">SortableIntField</a>
+<a href="SortableLongField.html">SortableLongField</a>
+<a href="StrField.html">StrField</a>
+<a href="TextField.html">TextField</a>
+<a href="TrieDateField.html">TrieDateField</a>
+<a href="TrieDoubleField.html">TrieDoubleField</a>
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>
+79
+Chapter 4: Documents, Fields, and Schema Design
+Class
+Description
+<a href="TrieField.html">TrieField</a> If this type is used, a “type” attribute must also be specified,
+</p>
+<blockquote>
+with a value of either: integer, long, float, double, date. Using
+this field is the same as using any of the Trie*Fields.
+</blockquote>
+<p>
+<a href="TrieFloatField.html">TrieFloatField</a> Floating point field accessible Lucene <a href="TrieRange.html">TrieRange</a> processing
+<a href="TrieIntField.html">TrieIntField</a> Int field accessible Lucene <a href="TrieRange.html">TrieRange</a> processing
+<a href="TrieLongField.html">TrieLongField</a> Long field accessible Lucene <a href="TrieRange.html">TrieRange</a> processing
+UUIDField Universally Unique Identifier (UUID). Pass in a value of
+</p>
+<blockquote>
+“NEW” and Solr will create a new UUID.
+</blockquote>
+	</article>
+	<footer>
+	</footer>
+	</body>
+</html>

@@ -1,0 +1,308 @@
+<html>
+	<head>
+		<title>PythonCodeConvention-Jeffrey Zhang</title>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+		<script type="text/javascript" src="scripts/shCore.js"></script>
+		<link type="text/css" href="css/main.css" rel="stylesheet"/>
+		<script type="text/javascript" src="scripts/shBrushJScript.js"></script>
+		<script type="text/javascript" src="scripts/shBrushPython.js"></script>
+		<link type="text/css" rel="stylesheet" href="styles/shCoreDjango.css"/>
+		<link type="text/css" rel="stylesheet" href="styles/shCore.css"/>
+		<script type="text/javascript">SyntaxHighlighter.all();</script>
+	</head>
+	<body>
+		<div id="wrapper">
+			<header>
+				<nav>
+					<ul>
+						<li class="first"><a title="Home" href="index.html">Home</a></li>
+						<li><a title="Blog" href="diary/diary.html">Blog</a></li>
+						<li class="actived"><a title="Wiki" href="index.html">Wiki</a></li>
+						<li><a title="Twitter" href="https://twitter.com/GeassLei">Twitter</a></li>
+						<li class="last"><a title="About Me" href="../resume/resume.html">README</a></li>
+					</ul>
+				</nav>
+			</header>
+			<article>
+
+<h1 id="toc_1">Python 编程规范</h1>
+    
+<ul>
+<li>
+编码: 所有的 Python 脚本文件都应在文件头标上 <code># -*- coding:utf-8 -*-</code> 。设置编辑器，默认保存为 utf-8 格式。
+</li>
+<li>
+注释: Python 的注释分为两种的概念，一种是由 # 开头的“真正的”注释，另一种是 docstrings。前者表明为何选择当前实现以及这种实现的原理和难点，后者表明如何使用这个包、模块、类、函数（方法），甚至包括使用示例和单元测 试。
+    坚持适当注释原则。对不存在技术难点的代码坚持不注释，对存在技术难点的代码必须注释。但与注释不同，推荐对每一个包、模块、类、函数（方法）写 docstrings，除非代码一目了然，非常简单。
+</li>
+<li>
+缩 进: 使用4个空格的 tab 进行缩进。
+</li>
+<li>
+空格
+</li>
+<ul>
+<li>
+在二元算术、逻辑运算符前后加空格：如 <code>a = b + c</code>；
+</li>
+<li>
+“:”用在行尾时前后皆不加空格，如分枝、循环、函数和类定义语言；用在非行尾时两端加空格，如 dict 对象的定义 <code>d = {‘key’ : ’value’}</code>。
+</li>
+<li>
+括号（含圆括号、方括号和花括号）前后不加空 格，如 <code>do_something(arg1, arg2)</code>，而不是 <code>do_something( arg1, arg2 )</code>；
+</li>
+<li>
+逗号后面加 一个空格，前面不加空格；<code>do_something(arg1, arg2)</code>
+</li>
+</ul>
+<li>
+空行: 适当的空行有利于增加代码的可读性，加空行可以参考如下几个准则：
+</li>
+<ul>
+<li>
+在类、函数的定义间加空行；
+</li>
+<li>
+在 import 不同种类的模块间加工行；
+</li>
+<li>
+在函数中的逻辑段落间加空行，即把相关的代码紧凑写在一起，作为一个逻辑段落，段落间以空行分隔；
+</li>
+</ul>
+<li>
+断行: 行的最大长度不得超过 79 个字符的标准。折叠长行的方法有以下几种方法：
+</li>
+<ul>
+<li>
+为长变量名换一个短名，如：
+<pre>
+    this.is.a.very.long.variable_name = this.is.another.long.variable_name
+    应改为：
+    variable_name1 = this.is.a.very.long.variable_name
+    variable_name2 = this.is.another.variable_name
+    variable_name1 = variable_name
+</pre>
+</li>
+<li>
+在括号（包括圆括号、方括号和花括号）内换行，如：
+<pre>
+    class Edit(CBase):
+        def __init__(self, parent, width, 
+                font = FONT, color = BLACK, pos = POS, style = 0):
+</pre>
+    如果行长到连第一个括号内的参数都放不下，则每个元素都单独占一行：
+<pre>
+    very_very_very_long_variable_name = Edit(parent, \
+                                                width, \
+                                                font, \
+                                                color, \
+                                                pos)
+</pre>
+</li>
+<li>
+在长行加入续行符强行断行，断行的位置应在操作符前，且换行后多一个缩进，以使维护人员看代码的时候看到代码行首即可判定这里存 在换行，如：
+<pre>
+    if color == WHITE or color == BLACK \
+        or color == BLUE: # 注意 or 操作符在新行的行首而不是旧行的行尾
+        do_something(color);
+</pre>
+</li>
+</ul>
+</ul>
+
+<h3 id="toc_1.0.1">命名</h3>
+<p>
+一致的命名可以给开发人员减少许多麻烦，而恰如其分的命名则可以大幅提高代码的可读性，降低维护成本。
+</p>
+<ul>
+<li>
+常量: 常量名所有字母大写，由下划线 连接各个单词，如
+<pre>
+    WHITE = 0XFFFFFF
+    THIS_IS_A_CONSTANT = 1
+</pre>
+</li>
+<li>
+变量: 变量名全部小写，由下划线连接各个单词，如
+<pre>
+    color = WHITE
+    this_is_a_variable = 1
+</pre>
+    不论是类成员变量还是全局变量，均不使用 m 或 g 前缀。私有类成员使用单一下划线前缀标识，多定义公开成员，少定义私有成员。
+    变量名不应带有类型信息，因为 Python 是动态类型语言。如 iValue、names_list、dict_obj 等都是不好的命名。
+</li>
+<li>
+函数: 函数名的命名规则与变量名相同。
+</li>
+<li>
+类: 类名单词首字母大写，不使用下划线连接单词，也不加入 C、T 等前缀。如：
+<pre>
+    class ThisIsAClass(object):
+        passs
+</pre>
+</li>
+<li>
+模块: 模块名全部小写，对于包内使用的模块，可以加一个下划线前缀，如
+<pre>
+    module.py
+    _internal_module.py
+</pre>
+</li>
+<li>
+包: 包的命名规范与模块相同。
+</li>
+<li>
+缩写: 命名应当尽量使用全拼写的单词，缩写的情况有如下两种：
+</li>
+<ul>
+<li>
+常用的缩写，如 XML、ID等，在命名时也应只大写首字母，如
+<pre>
+    class XmlParser(object):
+        pass
+</pre>
+</li>
+<li>
+命名中含有长单词，对某个单词进行缩写。这时应使用约定成俗的缩写方式，如去除元音、包含辅音的首字符等方式，例如：
+<pre>
+    function 缩写为 fn
+    text 缩写为 txt
+    object 缩写为 obj
+    count 缩写为 cnt
+    number 缩写为 num，等。
+</pre>
+</li>
+</ul>
+<li>
+特定命名方式: 主要是指 <code>__xxx__</code> 形式的系统保留字命名法。项目中也可以使用这种命名，它的意义在于这种形式的变量是只读的，这种形式的类成员函数尽量不要重写。如 
+<pre>
+    class Base(object):
+        def __init__(self, id, parent = None):
+            self.__id__ = id
+            self.__parent__ = parent
+        def __message__(self, msgid):
+            # …略
+</pre>
+</li>
+</ul>
+<p>
+其中 <code>__id__</code>、<code>__parent__</code> 和 <code>__message__</code> 都采用了系统保留字命名法。
+<h3 id="toc_1.0.2">语 句</h3>
+</p>
+<ul>
+<li>
+import : import 语句有以下几个原则需要遵守：
+</li>
+<ul>
+<li>
+import 的次序，这几种模块中用空行分隔开来。
+</li>
+<ul>
+<li>
+内置模块
+</li>
+<li>
+第三方模块
+</li>
+<li>
+项目中的其它模块
+</li>
+</ul>
+<li>
+一条 import 语句 import 一个模块。
+</li>
+<li>
+当从模块中 import 多个对象且超过一行时，使用如下断行法（此语法 py2.5 以上版本才支持）：<br />
+      不推荐这种写法，最好是写成多行。
+<pre>
+     from module import (obj1, obj2, obj3, obj4, 
+             obj5, obj6)
+</pre>
+</li>
+<li>
+不要使用 from module import *，除非是 import 常量定义模块或其它你确保不会出现命名空间冲突的模块。
+</li>
+<li>
+当从模块中引入类时，一般会使用如下格式
+<pre>
+    from myclass import MyClass
+    from foo.bar.yourclass import YouClass
+
+</pre>
+    如果有冲突，也可以用下面的格式
+<pre>
+
+    import myclass
+    import foo.bar.yourclass
+
+</pre>
+    使用时用<code>myclass.MyClass</code> 和 <code>foo.bar.youclass.YouClass</code>
+</li>
+</ul>
+</ul>
+
+<ul>
+<li>
+赋值: 对于赋值语言，主要是不要做无谓的对齐，如：
+<pre>
+    a           = 1                     # 这是一个行注释
+    variable    = 2                     # 另一个行注释
+    fn          = callback_function     # 还是行注释
+</pre>
+    没有必要做这种对齐，原因有两点：一是这种对齐会打乱编程时的注意力，大脑要同时处理两件事（编程和对齐）；二是以后阅读和维护都很困 难，因为人眼的横向视野很窄，把三个字段看成一行很困难，而且维护时要增加一个更长的变量名也会破坏对齐。直接这样写为佳：
+<pre>
+    a = 1 # 这是一个行注释
+    variable = 2 # 另一个行注释
+    fn = callback_function # 还是行注释
+</pre>
+</li>
+<li>
+分枝和循环: 对于分枝和循环，有如下几点需要注意的：
+</li>
+<ul>
+<li>
+不要写成一行，如：
+<pre>
+    if !flg: pass 和 for i in xrange(10): print i
+</pre>
+    都不是好代码，应写成
+<pre>
+    if !flg:
+        pass
+    for i in xrange(10):
+        print i
+</pre>
+    注：本文档中出现写成一行的例子是因为排版的原因，不得作为编码中不断行的依据。
+</li>
+<li>
+条件表达式的编写应该足够 pythonic，如以下形式的条件表达式是拙劣的：
+<pre>
+    if len(alist) != 0: do_something()
+    if alist != []: do_something()
+    if s != “”: do_something()
+    if var != None: do_something()
+    if var != False: do_something()
+    
+    上面的语句应该写成：
+    
+    if seq: do_somethin() # 注意，这里命名也更改了
+    if var: do_something()
+</pre>
+</li>
+<li>
+用得着的时候多使用循环语句的 else 分句，以简化代码。
+</li>
+</ul>
+</ul>
+<h3 id="toc_1.0.3">已有代码</h3>
+<p>
+对于项目中已有的代码，可能因为历史遗留原因不符合本规范，应当看作可以容忍的特例，允许存在；但不应在新的代码中延续旧的风格。
+对于第三方模块，可能不符合本规范，也应看作可以容忍的特例，允许存在；但不应在新的代码中使用第三方模块的风格。
+<h3 id="toc_1.0.4">已有风格</h3>
+开发人员往往在加入项目之前已经形成自有的编码风格，加入项目后应以本规范为准编写代码。特别是匈牙利命名法，因为带有类型信息，并不适合 Python 编程，不应在 Python 项目中应用。
+</p>
+	</article>
+	<footer>
+	</footer>
+	</body>
+</html>

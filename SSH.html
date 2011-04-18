@@ -1,0 +1,61 @@
+<html>
+	<head>
+		<title>SSH-Jeffrey Zhang</title>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+		<script type="text/javascript" src="scripts/shCore.js"></script>
+		<link type="text/css" href="css/main.css" rel="stylesheet"/>
+		<script type="text/javascript" src="scripts/shBrushJScript.js"></script>
+		<script type="text/javascript" src="scripts/shBrushPython.js"></script>
+		<link type="text/css" rel="stylesheet" href="styles/shCoreDjango.css"/>
+		<link type="text/css" rel="stylesheet" href="styles/shCore.css"/>
+		<script type="text/javascript">SyntaxHighlighter.all();</script>
+	</head>
+	<body>
+		<div id="wrapper">
+			<header>
+				<nav>
+					<ul>
+						<li class="first"><a title="Home" href="index.html">Home</a></li>
+						<li><a title="Blog" href="diary/diary.html">Blog</a></li>
+						<li class="actived"><a title="Wiki" href="index.html">Wiki</a></li>
+						<li><a title="Twitter" href="https://twitter.com/GeassLei">Twitter</a></li>
+						<li class="last"><a title="About Me" href="../resume/resume.html">README</a></li>
+					</ul>
+				</nav>
+			</header>
+			<article>
+
+<h1 id="toc_1">SSH</h1>
+<h2 id="toc_1.1">ssh代理与穿墙</h2>
+<p>
+用ssh命令开启本地端口的命令
+</p>
+<pre>
+    ssh -qTfnN -D 7070 username@host
+    -q :- be very quite, we are acting only as a tunnel.
+    -T :- Do not allocate a pseudo tty, we are only acting a tunnel.
+    -f :- move the ssh process to background, as we don’t want to interact with this ssh session directly.
+    -N :- Do not execute remote command.
+    -n :- redirect standard input to /dev/null.
+</pre>
+<p>
+然后输入密码实现连接即可。远程主机不需要做任何处理。
+然后在本地浏览器上设置代理，选择socket5（firefox等有选项），主机为localhost，端口为上面设置的7070。这样就可以通过代理上网了。
+有些ssh连接可能有无操作的时效限制，为了实现断线后的自动连接，可以先实现免密码ssh登录，然后安装autossh用下面的命令连接：
+</p>
+<pre>
+    autossh -M 2000 -N -D 127.0.0.1:8086 用户名@远程主机名 &amp;
+</pre>
+<p>
+在“系统－会话（或者启动应用程序）”中添加这条命令可以实现开机自动执行。
+</p>
+
+<h2 id="toc_1.2">免费SSH</h2>
+<p>
+<a href="http://xfeng.info/ssh">未知风</a>
+</p>
+	</article>
+	<footer>
+	</footer>
+	</body>
+</html>

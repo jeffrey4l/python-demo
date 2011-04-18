@@ -1,0 +1,146 @@
+<html>
+	<head>
+		<title>Ubuntu-Jeffrey Zhang</title>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+		<script type="text/javascript" src="scripts/shCore.js"></script>
+		<link type="text/css" href="css/main.css" rel="stylesheet"/>
+		<script type="text/javascript" src="scripts/shBrushJScript.js"></script>
+		<script type="text/javascript" src="scripts/shBrushPython.js"></script>
+		<link type="text/css" rel="stylesheet" href="styles/shCoreDjango.css"/>
+		<link type="text/css" rel="stylesheet" href="styles/shCore.css"/>
+		<script type="text/javascript">SyntaxHighlighter.all();</script>
+	</head>
+	<body>
+		<div id="wrapper">
+			<header>
+				<nav>
+					<ul>
+						<li class="first"><a title="Home" href="index.html">Home</a></li>
+						<li><a title="Blog" href="diary/diary.html">Blog</a></li>
+						<li class="actived"><a title="Wiki" href="index.html">Wiki</a></li>
+						<li><a title="Twitter" href="https://twitter.com/GeassLei">Twitter</a></li>
+						<li class="last"><a title="About Me" href="../resume/resume.html">README</a></li>
+					</ul>
+				</nav>
+			</header>
+			<article>
+
+<h1 id="toc_1">Ubuntu</h1>
+<ul>
+<li>
+软件
+</li>
+<ul>
+<li>
+<a href="http://code.google.com/p/dbfmplugin/">豆瓣电台的Rhythmbox插件</a>
+</li>
+</ul>
+<li>
+教程
+</li>
+<ul>
+<li>
+<a href="http://ideapad.it168.com/viewthread.php?tid=482493&amp;statsdata=409">一个不错的安装教程</a>	
+</li>
+</ul>
+<li>
+Ubuntu下使用声卡独占的解决方法
+<pre>
+	sudo apt-get remove gstreamer0.10-pulseaudio
+</pre>
+</li>
+<li>
+<a href="http://www.ubuntuka.com/70-best-ubuntu-appearance-themes/">Ubuntu70个主题</a>
+</li>
+<li>
+Ubuntu上通过命令行来备份及恢复安装过的软件
+<pre>
+	在现在机器上
+		sudo dpkg --get-selections  &gt; app-backup-list.txt
+	在重装的机器上	
+		sudo dpkg --set-selections &lt; app-backup-list.txt
+		sudo apt-get -y update
+		sudo apt-get dselect-upgrade
+	注意备份/etc/apt下的源
+</pre>
+</li>
+<li>
+得到ppa源的key的命令
+<pre>
+    sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 75D61CAD
+</pre>
+</li>
+<li>
+mount windows的共享目录
+<pre>
+    sudo mount //ip/sharename /media/hxh -o username=guest,password=guest,codepage=cp936,iocharset=utf8
+</pre>
+</li>
+</ul>
+  
+
+<h2 id="toc_1.1">ubuntu 服务管理</h2>
+<p>
+ubuntu中使用update-rc.d来管理系统的自动启动
+</p>
+<pre>
+Example:
+    update-rc.d apache2 disable
+</pre>
+<p>
+但是有一部分的服务采用了新的管理模式，系统用调用/etc/init/*.conf文件来管理自动启动的服务，所以只要修改这个文件即可。
+</p>
+
+<h2 id="toc_1.2">ubuntu下修改时间样式</h2>
+<p>
+gconf-editor
+</p>
+
+<h2 id="toc_1.3">U盘只读</h2>
+<p>
+有的时候，用ubuntu自动挂载Ｕ盘之类的移动硬盘时，会出现盘只读的问题，这时可以看下系统日志(syslog)来分析原因。一般可能是由于移动设备文件系统错误，为了避免更大的问题出现，自动挂载成只读。这时只要修复下文件系统即可。<br />
+在linux下可用如下命令
+</p>
+<pre>
+        dosfsck -v -a /dev/sdc1
+</pre>
+<p>
+在window下用如下命令
+</p>
+<pre>
+        chkdsk c: /f
+</pre>
+
+<h2 id="toc_1.4">Ubuntu日历显示阴历</h2>
+<pre>
+    sudo apt-get install lunar-applet
+</pre>
+<h2 id="toc_1.5">解决mp3乱码</h2>
+
+<ul>
+<li>
+安装python-mutagen
+<pre>
+    sudo apt-get install python-mutagen
+</pre>
+</li>
+<li>
+进入music的目录
+</li>
+<li>
+使用如下命令
+<pre>
+    find . -iname "*.mp3" -execdir mid3iconv -e GBK {} \; 
+</pre>
+</li>
+</ul>
+
+<h2 id="toc_1.6">释放内存缓存</h2>
+<pre>
+    sudo echo 1 &gt; /proc/sys/vm/drop_caches
+</pre>
+	</article>
+	<footer>
+	</footer>
+	</body>
+</html>

@@ -1,0 +1,52 @@
+<html>
+	<head>
+		<title>Linux_Common_Problem-Jeffrey Zhang</title>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+		<script type="text/javascript" src="scripts/shCore.js"></script>
+		<link type="text/css" href="css/main.css" rel="stylesheet"/>
+		<script type="text/javascript" src="scripts/shBrushJScript.js"></script>
+		<script type="text/javascript" src="scripts/shBrushPython.js"></script>
+		<link type="text/css" rel="stylesheet" href="styles/shCoreDjango.css"/>
+		<link type="text/css" rel="stylesheet" href="styles/shCore.css"/>
+		<script type="text/javascript">SyntaxHighlighter.all();</script>
+	</head>
+	<body>
+		<div id="wrapper">
+			<header>
+				<nav>
+					<ul>
+						<li class="first"><a title="Home" href="index.html">Home</a></li>
+						<li><a title="Blog" href="diary/diary.html">Blog</a></li>
+						<li class="actived"><a title="Wiki" href="index.html">Wiki</a></li>
+						<li><a title="Twitter" href="https://twitter.com/GeassLei">Twitter</a></li>
+						<li class="last"><a title="About Me" href="../resume/resume.html">README</a></li>
+					</ul>
+				</nav>
+			</header>
+			<article>
+
+<h1 id="toc_1">Linux常见问题与解决方案</h1>
+<h2 id="toc_1.1">Zip解压乱码</h2>
+<p>
+第一步 首先安装7zip和convmv（如果之前没有安装的话）
+</p>
+
+<p>
+sudo apt-get install p7zip-full convmv
+</p>
+
+<p>
+第二步 假设zip文件名为abc.zip，那么
+LANG=C 7z x abc.zip
+convmv -f cp936 -t utf8 -r --notest *
+</p>
+
+<h2 id="toc_1.2">得到自己的公网ip</h2>
+<pre>
+    curl -s http://whatismyip.org
+</pre>
+	</article>
+	<footer>
+	</footer>
+	</body>
+</html>

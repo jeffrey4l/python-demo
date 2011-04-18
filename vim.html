@@ -1,0 +1,111 @@
+<html>
+	<head>
+		<title>vim-Jeffrey Zhang</title>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+		<script type="text/javascript" src="scripts/shCore.js"></script>
+		<link type="text/css" href="css/main.css" rel="stylesheet"/>
+		<script type="text/javascript" src="scripts/shBrushJScript.js"></script>
+		<script type="text/javascript" src="scripts/shBrushPython.js"></script>
+		<link type="text/css" rel="stylesheet" href="styles/shCoreDjango.css"/>
+		<link type="text/css" rel="stylesheet" href="styles/shCore.css"/>
+		<script type="text/javascript">SyntaxHighlighter.all();</script>
+	</head>
+	<body>
+		<div id="wrapper">
+			<header>
+				<nav>
+					<ul>
+						<li class="first"><a title="Home" href="index.html">Home</a></li>
+						<li><a title="Blog" href="diary/diary.html">Blog</a></li>
+						<li class="actived"><a title="Wiki" href="index.html">Wiki</a></li>
+						<li><a title="Twitter" href="https://twitter.com/GeassLei">Twitter</a></li>
+						<li class="last"><a title="About Me" href="../resume/resume.html">README</a></li>
+					</ul>
+				</nav>
+			</header>
+			<article>
+
+<h1 id="toc_1">Vim/Gvim</h1>
+<h2 id="toc_1.1">插件</h2>
+<ul>
+<li>
+[vimwiki] | [taglist] | [bufexplorer] | [nerd_tree]|[nerd_comment]
+</li>
+</ul>
+<h2 id="toc_1.2">常用命令</h2>
+<ul>
+<li>
+set number 设定显示行号
+</li>
+<li>
+set hlsearch 在查找时高亮匹配的字符串
+</li>
+<li>
+set incsearch 在查找时自己搜索
+</li>
+</ul>
+<h2 id="toc_1.3">编译</h2>
+<p>
+Vim7.3已经出来了好长时间,但是ubuntu的源里一直没有把他加进来,实在引不了了,动手自己编译了一个版本。前段时间编译时一直不能加入python的支持，前两天重新编译时，终于搞定了，在此记录下。
+</p>
+
+<ul>
+<li>
+下载vim7.3源代码
+</li>
+</ul>
+<p>
+下载方式有以下两种：
+</p>
+<ul>
+<li>
+直接到官方网站上<a href="ftp://ftp.vim.org/pub/vim/unix/vim-7.3.tar.bz2">下载</a> 
+</li>
+<li>
+使用Mercurial直接从代码库中下载
+<pre>
+    hg clone https://vim.googlecode.com/hg/ vim
+</pre>
+    推荐大家使用第二种方法。
+</li>
+</ul>
+<li>
+安装编译工具
+<pre>
+    sudo apt-get install build-essential
+</pre>
+</li>
+<li>
+安装必要的信赖包
+</li>
+<p>
+在ubuntu下要先安装libncurses5-dev,python2.6-dev这两个包，命令如下：
+</p>
+<pre>
+    sudo apt-get install libncurses5-dev python2.6-dev
+</pre>
+
+<ul>
+<li>
+编译代码
+</li>
+</ul>
+<p>
+进入vim/src目录，依次运行如下命令
+</p>
+<pre>
+./configure --with-features=huge --enable-pythoninterp=yes --enable-gui --enable-cscope --enable-fontset --enable-perlinterp --enable-rubyinterp --with-python-config-dir=/usr/lib/python2.6/config 
+make 
+sudo make install
+</pre>
+
+<p>
+就可以完成vim7.3的编译安装了。
+对于vim7.3的新特性功能，大家可以访问<a href="http://xbeta.info/vim73b.htm">善用佳软</a>所写的文章。
+另面，我在<a href="http://github.com">github</a>上共享了我的<a href="https://github.com/jeffrey4l/vimrc">vim配置文件</a>。欢迎大家围观。
+</p>
+	</article>
+	<footer>
+	</footer>
+	</body>
+</html>

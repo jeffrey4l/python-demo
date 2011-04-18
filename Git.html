@@ -1,0 +1,73 @@
+<html>
+	<head>
+		<title>Git-Jeffrey Zhang</title>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+		<script type="text/javascript" src="scripts/shCore.js"></script>
+		<link type="text/css" href="css/main.css" rel="stylesheet"/>
+		<script type="text/javascript" src="scripts/shBrushJScript.js"></script>
+		<script type="text/javascript" src="scripts/shBrushPython.js"></script>
+		<link type="text/css" rel="stylesheet" href="styles/shCoreDjango.css"/>
+		<link type="text/css" rel="stylesheet" href="styles/shCore.css"/>
+		<script type="text/javascript">SyntaxHighlighter.all();</script>
+	</head>
+	<body>
+		<div id="wrapper">
+			<header>
+				<nav>
+					<ul>
+						<li class="first"><a title="Home" href="index.html">Home</a></li>
+						<li><a title="Blog" href="diary/diary.html">Blog</a></li>
+						<li class="actived"><a title="Wiki" href="index.html">Wiki</a></li>
+						<li><a title="Twitter" href="https://twitter.com/GeassLei">Twitter</a></li>
+						<li class="last"><a title="About Me" href="../resume/resume.html">README</a></li>
+					</ul>
+				</nav>
+			</header>
+			<article>
+
+<h1 id="toc_1">Git</h1>
+<p>
+<a href="http://www.bitsun.com/documents/gittutorcn.htm">Git Tutor</a>
+<h2 id="toc_1.1">改变Git diff</h2>
+</p>
+<ul>
+<li>
+建立一个用于DIFF命令，如下/usr/bin/gitdiff
+<pre>
+#!/bin/bash
+vimdiff "$2" "$5"
+</pre>
+</li>
+<li>
+向gitdiff增加运行权限
+<pre>
+    chmod +x /usr/bin/gitdiff
+</pre>
+</li>
+<li>
+修改~/.gitconfig文件，增加如下内容
+<pre>
+    [diff]
+        extenal = gitdiff
+    [pager]
+        diff =
+</pre>
+  或
+<pre>
+    [diff]
+        extenal = gitdiff
+    [core]
+        pager = 
+
+</pre>
+</li>
+</ul>
+<h2 id="toc_1.2">给Git增加别名</h2>
+<pre>
+    git config alias.co checkout
+</pre>
+	</article>
+	<footer>
+	</footer>
+	</body>
+</html>

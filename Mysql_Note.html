@@ -1,0 +1,48 @@
+<html>
+	<head>
+		<title>Mysql_Note-Jeffrey Zhang</title>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+		<script type="text/javascript" src="scripts/shCore.js"></script>
+		<link type="text/css" href="css/main.css" rel="stylesheet"/>
+		<script type="text/javascript" src="scripts/shBrushJScript.js"></script>
+		<script type="text/javascript" src="scripts/shBrushPython.js"></script>
+		<link type="text/css" rel="stylesheet" href="styles/shCoreDjango.css"/>
+		<link type="text/css" rel="stylesheet" href="styles/shCore.css"/>
+		<script type="text/javascript">SyntaxHighlighter.all();</script>
+	</head>
+	<body>
+		<div id="wrapper">
+			<header>
+				<nav>
+					<ul>
+						<li class="first"><a title="Home" href="index.html">Home</a></li>
+						<li><a title="Blog" href="diary/diary.html">Blog</a></li>
+						<li class="actived"><a title="Wiki" href="index.html">Wiki</a></li>
+						<li><a title="Twitter" href="https://twitter.com/GeassLei">Twitter</a></li>
+						<li class="last"><a title="About Me" href="../resume/resume.html">README</a></li>
+					</ul>
+				</nav>
+			</header>
+			<article>
+
+<h1 id="toc_1">Mysql杂记</h1>
+
+<ul>
+<li>
+数据库在安装是，如果系统是linux则默认情况下是大小写敏感的，在windows下则不是。
+<pre>
+	在my.con/my.ini中设置lower_case_table_names=1来忽略大小写
+</pre>
+</li>
+<li>
+取消mysql本机绑定： 
+<pre>
+	编辑/etc/mysql/my.cnf  ”bind-address = 127.0.0.1“注释
+</pre>
+</li>
+</ul>
+	</article>
+	<footer>
+	</footer>
+	</body>
+</html>
