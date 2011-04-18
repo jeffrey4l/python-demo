@@ -50,7 +50,28 @@
 在“系统－会话（或者启动应用程序）”中添加这条命令可以实现开机自动执行。
 </p>
 
-<h2 id="toc_1.2">免费SSH</h2>
+<h2 id="toc_1.2">配置SSH快速启动</h2>
+<p>
+可以为每个SSH连接配置alias及属性信息，以快速连接。可以修改$HOME/.ssh/config文件来实现
+</p>
+<pre>
+    hostname 190
+        host 192.168.20.190
+        username k4
+</pre>
+<p>
+这样，在使用时只要简单的使用<code>ssh 190</code>就可以实现服务器的连接。该配置同样支持<code>scp</code>及<code>rsync</code>
+</p>
+
+<h2 id="toc_1.3">开启rsync的断点续传功能</h2>
+<p>
+<code>rsync</code>基于<code>ssh</code>的文件同步工具，他进行的是文件差异同步，因此在同步时速度很快。
+默认情况下，他是没有开启断点续传功能的，想要开启该功能需要使用<code>--partial</code>参数。更简单的，在同步文件时，可以使用如下命令
+</p>
+<pre>
+    rsync -avozP . 190:~/
+</pre>
+<h2 id="toc_1.4">免费SSH</h2>
 <p>
 <a href="http://xfeng.info/ssh">未知风</a>
 </p>
