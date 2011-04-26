@@ -76,6 +76,11 @@ AUTHENTICATION_BACKENDS
 <li>
 django_auth_ldap.ba
 </li>
+<ul>
+<li>
+When the user login the sit first time, need use <code>populate_user()</code> method to get the user from ldap
+</li>
+</ul>
 </ul>
 </ul>
 <li>
@@ -87,6 +92,10 @@ auth: django have login and logout view (1.3/topic/auth)
 </li>
 </ul>
 </ul>
+
+<p>
+<span class="todo">XXX:</span> use two FK in on model, will have problem whitout relate_name
+</p>
 	</article>
 	<footer>
 	</footer>
