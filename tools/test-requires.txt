@@ -1,0 +1,6 @@
+nose
+nosexcover
+pylint==0.26.0
+coverage
+mox
+pep8
