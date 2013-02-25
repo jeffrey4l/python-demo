@@ -1,0 +1,6 @@
+include MANIFEST.in
+include tox.ini
+include README
+graft etc
+graft tools
+global-exclude *.pyc

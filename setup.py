@@ -5,6 +5,7 @@ from setuptools import setup, find_packages
 setup(
         name='jblog',
         version='1.0',
+        url='http://www.infohold.com.cn',
         description="this is my blog program",
         author="Jeffrey4l",
         author_email="zhang.lei.fly@gmail.com",
