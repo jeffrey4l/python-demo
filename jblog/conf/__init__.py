@@ -1,8 +1,12 @@
 #-*- coding:utf-8 -*-
 
 import os
+import logging
+import logging.config
 
 from cfg import get_cfg, Config
+
+ME_LOC = os.path.dirname(os.path.abspath(__file__))
 
 class ConfError(Exception):
     pass
@@ -25,3 +29,20 @@ if MODE == 'live':
     from live import *
 elif MODE == 'dev':
     from dev import *
+    
+LOG_CONF_MAPPING={
+        'dev':'logging-dev.conf',
+        'live':'logging-live.conf'
+        }
+
+_INITED=False
+
+def get_logger(name):
+    global _INITED
+    if not _INITED:
+        logging.config.fileConfig(os.path.join(ME_LOC, LOG_CONF_MAPPING[MODE]))
+        _INITED=True
+    return logging.getLogger(name)
+
+
+

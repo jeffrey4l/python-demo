@@ -4,7 +4,9 @@ import sys
 import bottle
 from bottle import route
 
-from conf import CFG, DB
+from conf import CFG, DB, get_logger
+
+LOG=get_logger(__file__)
 
 
 html='''<html><title></title><body>%s</body></html>'''
@@ -12,11 +14,14 @@ html='''<html><title></title><body>%s</body></html>'''
 @route('/')
 def hello():
 
+    LOG.info('in the hello method')
+
     table = '<table>'
     for k in CFG:
         table +='<tr><td>%s</td><td>%s</td></tr>' % (k, CFG[k])
     table +='<tr><td>DB</td><td>%s</td></tr>' %  DB
     table += '</table>'
+    LOG.error('I am going to out of hello method')
     return html % table
 
 
