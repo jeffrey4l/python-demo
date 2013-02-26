@@ -4,7 +4,7 @@ import sys
 import bottle
 from bottle import route
 
-from conf import CFG
+from conf import CFG, DB
 
 
 html='''<html><title></title><body>%s</body></html>'''
@@ -15,6 +15,7 @@ def hello():
     table = '<table>'
     for k in CFG:
         table +='<tr><td>%s</td><td>%s</td></tr>' % (k, CFG[k])
+    table +='<tr><td>DB</td><td>%s</td></tr>' %  DB
     table += '</table>'
     return html % table
 
