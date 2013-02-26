@@ -219,7 +219,7 @@ class Config(collections.Mapping):
 
 
 CONF_MAPPING={
-        'dev':('default.init', 'dev.ini'),
+        'dev':('default.ini', 'dev.ini'),
         'live':('default.ini', 'live.ini'),
         }
 
@@ -241,11 +241,9 @@ def find_files(files):
 def get_cfg(mode=None, conf_mapping=CONF_MAPPING, default='live'):
 
     conf_files = None
-    if not mode:
-        conf_files = conf_mapping[default]
-    else:
-        conf_files = conf_mapping[mode]
-
+    env_mode = os.environ.get('MODE', None)
+    real_mode = mode if mode else env_mode if env_mode else default
+    conf_files = conf_mapping[real_mode]
     config = Config(find_files(conf_files))
     return config
 

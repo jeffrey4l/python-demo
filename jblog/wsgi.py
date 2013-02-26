@@ -4,12 +4,19 @@ import sys
 import bottle
 from bottle import route
 
+from conf import CFG
+
 
 html='''<html><title></title><body>%s</body></html>'''
 
 @route('/')
 def hello():
-    return html % '<h1>hello world</h1>'
+
+    table = '<table>'
+    for k in CFG:
+        table +='<tr><td>%s</td><td>%s</td></tr>' % (k, CFG[k])
+    table += '</table>'
+    return html % table
 
 
 application = bottle.default_app()
