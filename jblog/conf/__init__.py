@@ -2,7 +2,7 @@
 
 import os
 
-from cfg import get_cfg
+from cfg import get_cfg, Config
 
 class ConfError(Exception):
     pass
